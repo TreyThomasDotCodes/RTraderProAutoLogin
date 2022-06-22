@@ -8,14 +8,17 @@ namespace TreyThomasDotCodes.RTraderProAutoLogin.App
     {
         static void Main(string[] args)
         {
-            using (var automation = new UIA3Automation())
-            using (var app = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo(@"C:\Program Files (x86)\Rithmic\Rithmic Trader Pro\Rithmic Trader Pro.exe")))
-            {
-                var window = app.GetMainWindow(automation);
-                var loginButton = window.FindFirstDescendant(cf => cf.ByText("Login")).AsButton();
+            string path = @"C:\Program Files (x86)\Rithmic\Rithmic Trader Pro\Rithmic Trader Pro.exe";
+            if (args.Length > 0)
+                path = args[0];
 
-                loginButton.Invoke();
-            }
+            using var automation = new UIA3Automation();
+            using var app = Application.AttachOrLaunch(new System.Diagnostics.ProcessStartInfo(path));
+
+            var window = app.GetMainWindow(automation);
+            var loginButton = window.FindFirstDescendant(cf => cf.ByText("Login")).AsButton();
+
+            loginButton.Invoke();
         }
     }
 }
