@@ -2,7 +2,7 @@
 using FlaUI.Core.AutomationElements;
 using FlaUI.UIA3;
 
-namespace TreyThomasDotCodes.RTraderProAutoLogin.App
+namespace TTDC.RTraderProAutoLogin.App
 {
     class Program
     {
